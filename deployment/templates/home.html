@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Car Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .input-field {
+            margin-bottom: 20px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 style="color: rgb(12, 12, 211);">This model will use linear regression model trained to predict the value of your car based on mileage and car age</h2>
+    <br>
+    <h2>Select Your Car Model</h2>
+
+    <form action="/submit" method="POST">
+        <!-- Car model dropdown -->
+        <label for="carModel">Choose a car model:</label>
+        <select id="carModel" name="carModel">
+            <option value="BMW X5">BMW X5</option>
+            <option value="Audi A5">Audi A5</option>
+            <option value="Mercedez Benz C class">Mercedez Benz C class</option>
+            <!-- Expandable: Add more car models here -->
+        </select>
+
+    <!-- Mileage input -->
+    <div class="input-field">
+        <label for="mileage">Enter the mileage (km):</label>
+        <input type="number" id="mileage" name="mileage" placeholder="Enter mileage" required>
+    </div>
+
+    <!-- Age of car input -->
+    <div class="input-field">
+        <label for="age">Enter the age of the car (years):</label>
+        <input type="number" id="age" name="age" placeholder="Enter age of car" required>
+    </div>
+
+    <!-- Error message -->
+    <p id="errorMsg" class="error"></p>
+
+    <!-- Button to submit the selection -->
+    <button onclick="validateAndShowCarDetails()">Submit</button>
+
+    <!-- Display selected model -->
+    <p id="result"></p>
+</div>
+
+<script>
+    function validateAndShowCarDetails() {
+        // Get the selected car model
+        var carModel = document.getElementById("carModel").value;
+
+        // Get the input values for mileage and age
+        var mileage = document.getElementById("mileage").value;
+        var age = document.getElementById("age").value;
+
+        // Get the error message element
+        var errorMsg = document.getElementById("errorMsg");
+
+        // Validate form inputs
+        if (carModel === "" || mileage === "" || age === "") {
+            errorMsg.innerHTML = "Please fill out all fields before submitting.";
+        } else if (mileage <= 0 || age <= 0) {
+            errorMsg.innerHTML = "Please enter valid positive numbers for mileage and age.";
+        } else {
+            // Clear error message
+            errorMsg.innerHTML = "";
+
+            // Display the selected car details
+            var resultText = "You have selected: " + carModel + "<br>" +
+                            "Mileage: " + mileage + " km<br>" +
+                            "Age of car: " + age + " years";
+            document.getElementById("result").innerHTML = resultText;
+        }
+    }
+</script>
+
+</body>
+</html>

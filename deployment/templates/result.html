@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+        }
+        h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 2em;
+            color: #4CAF50; /* Green color */
+            margin: 20px 0;
+        }
+        .accuracy {
+            font-size: 1.2em;
+            color: #555; /* Dark gray */
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Car Price Prediction</h2>
+    <div class="price">
+        The predicted price of your car is: ${{ price }}
+    </div>
+    <div class="accuracy">
+        Accuracy: {{ accuracy }}%
+    </div>
+    <footer>
+        © 2024 Car Price Predictor
+    </footer>
+</div>
+
+</body>
+</html>
